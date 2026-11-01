@@ -3,31 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dominik Laptops</title>
+  <title>Wojsko Polskie 2.0 - Serwer Minecraft</title>
   <style>
     /* --- ZMIENNE KOLORÓW (MOTYWY) --- */
     :root {
-      --bg-color: #f8f9fa;
-      --text-color: #212529;
+      --bg-color: #f4f6f8;
+      --text-color: #1a1a1a;
       --nav-bg: #ffffff;
       --card-bg: #ffffff;
-      --footer-bg: #e9ecef;
-      --border-color: #dee2e6;
-      --accent-color: #007bff;
-      --accent-hover: #0056b3;
-      --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      --footer-bg: #e2e8f0;
+      --border-color: #cbd5e1;
+      --accent-color: #2e7d32; /* Wojskowa zieleń */
+      --accent-hover: #1b5e20;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      --badge-bg: #e8f5e9;
+      --badge-color: #2e7d32;
     }
 
     [data-theme="dark"] {
-      --bg-color: #121212;
-      --text-color: #e0e0e0;
-      --nav-bg: #1e1e1e;
-      --card-bg: #1e1e1e;
-      --footer-bg: #181818;
-      --border-color: #333333;
-      --accent-color: #375a7f;
-      --accent-hover: #2b4764;
-      --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      --bg-color: #0f172a;
+      --text-color: #f1f5f9;
+      --nav-bg: #1e293b;
+      --card-bg: #1e293b;
+      --footer-bg: #0f172a;
+      --border-color: #334155;
+      --accent-color: #4caf50;
+      --accent-hover: #388e3c;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      --badge-bg: #1b3820;
+      --badge-color: #81c784;
     }
 
     /* --- RESET I STYLE PODSTAWOWE --- */
@@ -39,7 +43,7 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
       display: flex;
@@ -72,7 +76,7 @@
     }
 
     .nav-logo img {
-      height: 45px;
+      height: 48px;
       width: auto;
       object-fit: contain;
     }
@@ -121,28 +125,82 @@
     /* --- TREŚĆ GŁÓWNA --- */
     main {
       flex: 1;
-      max-width: 1200px;
+      max-width: 1000px;
       width: 100%;
-      margin: 2rem auto;
-      padding: 0 2rem;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
     }
 
-    .content-card {
+    .hero-card {
       background-color: var(--card-bg);
       border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 2.5rem;
+      border-radius: 16px;
+      padding: 3rem 2rem;
+      text-align: center;
       box-shadow: var(--shadow);
     }
 
-    h1 {
+    .badge {
+      display: inline-block;
+      background-color: var(--badge-bg);
+      color: var(--badge-color);
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
       margin-bottom: 1rem;
-      color: var(--text-color);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    p {
-      line-height: 1.6;
+    h1 {
+      font-size: 2.5rem;
       margin-bottom: 1rem;
+    }
+
+    .hero-description {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      max-width: 700px;
+      margin: 0 auto 2rem auto;
+      opacity: 0.9;
+    }
+
+    /* BAR IP SERWERA */
+    .ip-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      background-color: var(--bg-color);
+      border: 2px dashed var(--accent-color);
+      padding: 0.8rem 1.5rem;
+      border-radius: 10px;
+      cursor: pointer;
+      user-select: all;
+    }
+
+    .ip-text {
+      font-family: monospace;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--accent-color);
+    }
+
+    .copy-btn {
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .copy-btn:hover {
+      background-color: var(--accent-hover);
     }
 
     /* --- STOPKA --- */
@@ -150,15 +208,21 @@
       background-color: var(--footer-bg);
       border-top: 1px solid var(--border-color);
       text-align: center;
-      padding: 1.5rem;
-      font-size: 0.9rem;
+      padding: 1.8rem;
+      font-size: 0.95rem;
+      margin-top: auto;
     }
 
     footer p {
       margin: 0.3rem 0;
     }
 
-    /* --- RESPONSYWNOŚĆ --- */
+    .credits {
+      opacity: 0.75;
+      font-size: 0.85rem;
+    }
+
+    /* RESPONSYWNOŚĆ */
     @media (max-width: 768px) {
       .navbar {
         grid-template-columns: 1fr 1fr;
@@ -169,6 +233,13 @@
         justify-content: center;
         order: 3;
       }
+      h1 {
+        font-size: 1.8rem;
+      }
+      .ip-box {
+        flex-direction: column;
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -178,7 +249,7 @@
   <header>
     <nav class="navbar">
       <div class="nav-logo">
-        <a href="#"><img src="/logo.png" alt="Dominik Laptops Logo"></a>
+        <a href="#"><img src="/logo.png" alt="Wojsko Polskie 2.0 Logo"></a>
       </div>
       
       <ul class="nav-links">
@@ -195,28 +266,36 @@
     </nav>
   </header>
 
-  <!-- TREŚĆ -->
+  <!-- TREŚĆ GŁÓWNA -->
   <main>
-    <section class="content-card">
-      <h1>Witaj w Dominik Laptops</h1>
-      <p>To jest nowoczesny szablon strony internetowej z przygotowanym układem oraz przełącznikiem trybu jasnego i ciemnego.</p>
-      <p>Możesz w tym miejscu umieścić dowolną treść — opisy laptopów, ofertę lub aktualności.</p>
+    <section class="hero-card">
+      <span class="badge">Oficjalna Kontynuacja</span>
+      <h1>Wojsko Polskie 2.0</h1>
+      <p class="hero-description">
+        Witaj w nowej odsłonie serwera <strong>Wojsko Polskie</strong>! Udoskonalona rozgrywka, nowa społeczność oraz jeszcze lepsze wsparcie dla graczy. Dołącz do nas już teraz!
+      </p>
+
+      <!-- SEKCJA ADRESU IP -->
+      <div class="ip-box" onclick="copyIp()">
+        <span class="ip-text" id="serverIp">wojskopl.mchosting.pl</span>
+        <button class="copy-btn" id="copyBtn">Kopiuj IP</button>
+      </div>
     </section>
   </main>
 
   <!-- STOPKA -->
   <footer>
     <p>© Dominik Laptops</p>
-    <p>Created by Dominik Leśków and Philip Pałyga</p>
+    <p class="credits">Created by Dominik Leśków and Philip Pałyga</p>
   </footer>
 
-  <!-- SKRYPT DO TRYBU JASNY/CIEMNY -->
+  <!-- SKRYPTY -->
   <script>
+    // Motyw Jasny / Ciemny
     const toggleBtn = document.getElementById('themeToggle');
     const themeIcon = document.getElementById('themeIcon');
     const themeText = document.getElementById('themeText');
 
-    // Sprawdzenie zapisanego motywu w localStorage lub preferencji systemu
     const currentTheme = localStorage.getItem('theme') || 
       (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 
@@ -228,7 +307,6 @@
 
     toggleBtn.addEventListener('click', () => {
       let theme = document.documentElement.getAttribute('data-theme');
-      
       if (theme === 'dark') {
         document.documentElement.setAttribute('data-theme', 'light');
         localStorage.setItem('theme', 'light');
@@ -241,6 +319,21 @@
         themeText.textContent = 'Jasny';
       }
     });
+
+    // Kopiowanie IP do schowka
+    function copyIp() {
+      const ip = document.getElementById('serverIp').innerText;
+      navigator.clipboard.writeText(ip);
+      
+      const btn = document.getElementById('copyBtn');
+      btn.innerText = 'Skopiowano!';
+      btn.style.backgroundColor = '#15803d';
+      
+      setTimeout(() => {
+        btn.innerText = 'Kopiuj IP';
+        btn.style.backgroundColor = '';
+      }, 2000);
+    }
   </script>
 </body>
 </html>
