@@ -274,3 +274,107 @@
     .contact-item {
       background-color: var(--bg-color);
       border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .contact-item h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-item a {
+      color: var(--accent-color);
+      word-break: break-all;
+    }
+
+    /* --- STOPKA --- */
+    footer {
+      background-color: var(--footer-bg);
+      border-top: 1px solid var(--border-color);
+      text-align: center;
+      padding: 1.8rem;
+      font-size: 0.95rem;
+      margin-top: auto;
+    }
+
+    footer p {
+      margin: 0.3rem 0;
+    }
+
+    .credits {
+      opacity: 0.75;
+      font-size: 0.85rem;
+    }
+
+    /* RESPONSYWNOŚĆ */
+    @media (max-width: 768px) {
+      .navbar {
+        grid-template-columns: 1fr 1fr;
+        row-gap: 1rem;
+      }
+      .nav-links {
+        grid-column: span 2;
+        justify-content: center;
+        order: 3;
+      }
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .ip-box {
+        flex-direction: column;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PASEK GÓRNY -->
+  <header>
+    <nav class="navbar">
+      <div class="nav-logo">
+        <img src="/logo.png" alt="Wojsko Polskie 2.0" onclick="showPage('home')">
+      </div>
+      
+      <ul class="nav-links">
+        <li><a class="nav-link active" onclick="showPage('home')" id="nav-home">Strona Główna</a></li>
+        <li><a class="nav-link" onclick="showPage('rules')" id="nav-rules">Regulamin</a></li>
+        <li><a class="nav-link" onclick="showPage('contact')" id="nav-contact">Kontakt</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" id="themeToggle" aria-label="Zmień motyw">
+          <span id="themeIcon">🌙</span> <span id="themeText">Ciemny</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- TREŚĆ GŁÓWNA -->
+  <main>
+    <!-- STRONA GŁÓWNA -->
+    <section id="home" class="page-section active">
+      <div class="card hero-card">
+        <span class="badge">Oficjalna Kontynuacja</span>
+        <h1>Wojsko Polskie 2.0</h1>
+        <p class="hero-description">
+          Witaj w nowej odsłonie kultowego serwera <strong>Wojsko Polskie</strong>! Przygotowaliśmy dla Was ulepszony system rozgrywki, zbalansowaną rozgrywkę oraz miłą atmosferę.
+        </p>
+
+        <div class="ip-box" onclick="copyIp()">
+          <span class="ip-text" id="serverIp">wojskopl.mchosting.pl</span>
+          <button class="btn" id="copyBtn">Kopiuj IP</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- REGULAMIN -->
+    <section id="rules" class="page-section">
+      <div class="card">
+        <h2>Regulamin Serwera Wojsko Polskie 2.0</h2>
+        <p style="margin-bottom: 1.5rem; opacity: 0.8;">Wejście na serwer oznacza automatyczną akceptację poniższych zasad.</p>
+        
+        <ol class="rules-list">
+          <li><strong>Kultura osobista:</strong> Szanuj innych graczy i administrację. Zakazane jest stosowanie wulgaryzmów, obrazanie, nękanie oraz szerzenie mowy nienawiści.</li>
+          <li><strong>Brak czitów i wspomagaczy:</strong> Używanie modyfikacji dających przewagę (m.in. X-Ray, KillAura, Fly, AutoClicker) jest surowo zabronione i grozi permanentnym ban
