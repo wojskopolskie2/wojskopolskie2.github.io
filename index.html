@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dominik Laptops</title>
+  <style>
+    /* --- ZMIENNE KOLORÓW (MOTYWY) --- */
+    :root {
+      --bg-color: #f8f9fa;
+      --text-color: #212529;
+      --nav-bg: #ffffff;
+      --card-bg: #ffffff;
+      --footer-bg: #e9ecef;
+      --border-color: #dee2e6;
+      --accent-color: #007bff;
+      --accent-hover: #0056b3;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #121212;
+      --text-color: #e0e0e0;
+      --nav-bg: #1e1e1e;
+      --card-bg: #1e1e1e;
+      --footer-bg: #181818;
+      --border-color: #333333;
+      --accent-color: #375a7f;
+      --accent-hover: #2b4764;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    /* --- RESET I STYLE PODSTAWOWE --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* --- PASEK GÓRNY (NAVBAR) --- */
+    header {
+      background-color: var(--nav-bg);
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-logo img {
+      height: 45px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.5rem 0.8rem;
+      border-radius: 6px;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-color);
+    }
+
+    .nav-actions {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .theme-toggle-btn {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-color);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .theme-toggle-btn:hover {
+      background-color: var(--border-color);
+    }
+
+    /* --- TREŚĆ GŁÓWNA --- */
+    main {
+      flex: 1;
+      max-width: 1200px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+
+    .content-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    h1 {
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    p {
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    /* --- STOPKA --- */
+    footer {
+      background-color: var(--footer-bg);
+      border-top: 1px solid var(--border-color);
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    footer p {
+      margin: 0.3rem 0;
+    }
+
+    /* --- RESPONSYWNOŚĆ --- */
+    @media (max-width: 768px) {
+      .navbar {
+        grid-template-columns: 1fr 1fr;
+        row-gap: 1rem;
+      }
+      .nav-links {
+        grid-column: span 2;
+        justify-content: center;
+        order: 3;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PASEK GÓRNY -->
+  <header>
+    <nav class="navbar">
+      <div class="nav-logo">
+        <a href="#"><img src="/logo.png" alt="Dominik Laptops Logo"></a>
+      </div>
+      
+      <ul class="nav-links">
+        <li><a href="#">Strona Główna</a></li>
+        <li><a href="#">Regulamin</a></li>
+        <li><a href="#">Kontakt</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" id="themeToggle" aria-label="Zmień motyw">
+          <span id="themeIcon">🌙</span> <span id="themeText">Ciemny</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- TREŚĆ -->
+  <main>
+    <section class="content-card">
+      <h1>Witaj w Dominik Laptops</h1>
+      <p>To jest nowoczesny szablon strony internetowej z przygotowanym układem oraz przełącznikiem trybu jasnego i ciemnego.</p>
+      <p>Możesz w tym miejscu umieścić dowolną treść — opisy laptopów, ofertę lub aktualności.</p>
+    </section>
+  </main>
+
+  <!-- STOPKA -->
+  <footer>
+    <p>© Dominik Laptops</p>
+    <p>Created by Dominik Leśków and Philip Pałyga</p>
+  </footer>
+
+  <!-- SKRYPT DO TRYBU JASNY/CIEMNY -->
+  <script>
+    const toggleBtn = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeText = document.getElementById('themeText');
+
+    // Sprawdzenie zapisanego motywu w localStorage lub preferencji systemu
+    const currentTheme = localStorage.getItem('theme') || 
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+    if (currentTheme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      themeIcon.textContent = '☀️';
+      themeText.textContent = 'Jasny';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      let theme = document.documentElement.getAttribute('data-theme');
+      
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+        themeIcon.textContent = '🌙';
+        themeText.textContent = 'Ciemny';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        themeIcon.textContent = '☀️';
+        themeText.textContent = 'Jasny';
+      }
+    });
+  </script>
+</body>
+</html>
